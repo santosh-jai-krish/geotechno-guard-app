@@ -2,64 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Geotechno Guard Login</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>GeoTechno Guard Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f7f9fc;
-            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
         }
         .login-container {
-            max-width: 400px;
-            margin: 80px auto;
-            padding: 30px;
-            background-color: #fff;
+            margin-top: 80px;
+        }
+        .card {
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
         .logo-circle {
             width: 100px;
             height: 100px;
-            background-color: #e9ecef;
+            background-color: #ffffff;
             border-radius: 50%;
-            margin: 0 auto 25px;
+            margin: -60px auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
+            border: 2px solid #eaeaea;
         }
         .logo-circle img {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             object-fit: contain;
-            border-radius: 50%;
         }
-        .singpass-btn {
-            display: block;
-            width: 100%;
-            margin-top: 20px;
-            background-color: #dbe5ff;
-            border: 1px solid #3a57e8;
-            color: #3a57e8;
+        .btn-singpass {
+            background-color: #e60012;
+            color: white;
+        }
+        .btn-singpass:hover {
+            background-color: #c0000f;
         }
     </style>
 </head>
 <body>
-
-<div class="login-container text-center">
-    <div class="logo-circle">
-        <img src="{{ url_for('static', filename='images/GEOTCHNO.png') }}" alt="GEOTCHNO Logo">
+    <div class="container login-container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card p-4">
+                    <div class="logo-circle">
+                        <img src="{{ url_for('static', filename='images/GEOTCHNO.png') }}" alt="Logo">
+                    </div>
+                    <h3 class="text-center mb-4">Employee / Staff Login</h3>
+                    <form method="POST" action="/login">
+                        <div class="mb-3">
+                            <input type="text" name="username" class="form-control" placeholder="Username" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" name="password" class="form-control" placeholder="Password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                    <hr>
+                    <div class="text-center">
+                        <form action="/singpass-login" method="get">
+                            <button class="btn btn-singpass w-100" type="submit">
+                                Login with Singpass
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <form method="POST">
-        <div class="mb-3">
-            <input type="text" class="form-control" name="username" placeholder="Staff ID" required>
-        </div>
-        <div class="mb-3">
-            <input type="password" class="form-control" name="password" placeholder="Password" required>
-        </div>
-        <button type="submit" class="btn btn-primary w-100">Login</button>
-        <button type="button" class="btn singpass-btn mt-2">Login with Singpass</button>
-    </form>
-</div>
-
 </body>
 </html>
