@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HR Dashboard - Geotechno</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            height: 100vh;
+            background-color: #343a40;
+            padding-top: 20px;
+            color: white;
+        }
+        .sidebar a {
+            color: white;
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+        }
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .action-btn {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-2 d-none d-md-block sidebar">
+            <div class="text-center mb-4">
+                <h4>HR Panel</h4>
+            </div>
+            <a href="#">Dashboard</a>
+            <a href="#">Employees</a>
+            <a href="#">Reports</a>
+            <a href="#">Schedule</a>
+            <a href="#">Logout</a>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="col-md-10 ml-sm-auto px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 mb-3 border-bottom">
+                <h2>Employee Attendance</h2>
+                <button class="btn btn-primary">Add New</button>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">Employee</th>
+                            <th scope="col">Time In</th>
+                            <th scope="col">Time Out</th>
+                            <th scope="col">Hours</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <img src="https://i.pravatar.cc/40?img=1" class="profile-img me-2" alt="avatar">
+                                Mehta Deering
+                            </td>
+                            <td>09:00 AM</td>
+                            <td>05:30 PM</td>
+                            <td>8h 30m</td>
+                            <td>
+                                <button class="btn btn-sm btn-success action-btn">Edit</button>
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="https://i.pravatar.cc/40?img=2" class="profile-img me-2" alt="avatar">
+                                Vivek Singh
+                            </td>
+                            <td>10:15 AM</td>
+                            <td>06:45 PM</td>
+                            <td>8h 30m</td>
+                            <td>
+                                <button class="btn btn-sm btn-success action-btn">Edit</button>
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="https://i.pravatar.cc/40?img=3" class="profile-img me-2" alt="avatar">
+                                Rina Das
+                            </td>
+                            <td>08:45 AM</td>
+                            <td>04:45 PM</td>
+                            <td>8h</td>
+                            <td>
+                                <button class="btn btn-sm btn-success action-btn">Edit</button>
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
