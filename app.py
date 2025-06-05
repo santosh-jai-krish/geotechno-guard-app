@@ -2,7 +2,6 @@ from flask import Flask, render_template, redirect, url_for, request, session
 from flask_sqlalchemy import SQLAlchemy
 import os
 import requests
-import json
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY", "supersecretkey")
@@ -26,6 +25,11 @@ def seed_users():
         {"username": "masteradmin", "password": "master123", "role": "masteradmin"},
         {"username": "admin", "password": "admin123", "role": "admin"},
         {"username": "guard", "password": "guard123", "role": "guard"},
+        {"username": "ammar", "password": "hr123", "role": "hr"},
+        {"username": "abdullah", "password": "hr123", "role": "hr"},
+        {"username": "alan", "password": "hr123", "role": "hr"},
+        {"username": "gifri", "password": "hr123", "role": "hr"},
+        {"username": "santosh", "password": "hr123", "role": "hr"},
     ]
     for user in default_users:
         if not User.query.filter_by(username=user["username"]).first():
@@ -53,6 +57,8 @@ def login():
                 return redirect(url_for("admin_dashboard"))
             elif user.role == "guard":
                 return redirect(url_for("guard_dashboard"))
+            elif user.role == "hr":
+                return redirect(url_for("hr_dashboard"))
         return "Invalid credentials", 401
     return render_template("login.html")
 
@@ -102,7 +108,6 @@ def singpass_callback():
     if not code:
         return "Error: No code in callback.", 400
 
-    # Exchange code for access token
     token_url = os.getenv("TOKEN_URL")
     client_id = os.getenv("CLIENT_ID")
     redirect_uri = os.getenv("REDIRECT_URI")
@@ -115,17 +120,16 @@ def singpass_callback():
     }
 
     headers = {"Content-Type": "application/x-www-form-urlencoded"}
-
     response = requests.post(token_url, data=payload, headers=headers)
+
     if response.status_code != 200:
         return f"Failed to retrieve token: {response.text}", 400
 
     token_data = response.json()
     id_token = token_data.get("id_token", "")
 
-    # (Optional: Validate token using JWKS - skipped for simplicity here)
-    # Set session
-    session["role"] = "hr"  # or use real mapping from id_token
+    # For simplicity, directly assign HR role (use id_token validation in production)
+    session["role"] = "hr"
     return redirect(url_for("hr_dashboard"))
 
 # === Run App ===
